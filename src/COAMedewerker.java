@@ -1,8 +1,12 @@
 import java.util.Scanner;
 
-public class COAMedewerker extends Persoon {
+public class COAMedewerker extends BevoegdPersoon {
+    public COAMedewerker(String gebruikersnaam, String wachtwoord) {
+        super.gebruikersnaam = gebruikersnaam;
+        super.wachtwoord = wachtwoord;
+    }
     @Override
-    public void menuKeuze() {
+    public void voerTaakUit() {
         System.out.println("Maak je keuze \n1. Vluchteling registreren \n2. Vluchteling plaatsen \n3. Dossier bijwerken\n4. Terug naar inloggen");
         if (scanner.hasNextInt()) {
             int keuze = scanner.nextInt();
@@ -34,7 +38,7 @@ public class COAMedewerker extends Persoon {
                 case 4: return;
                 default:
                     System.out.println("Voer een geldige keuze in");
-                    menuKeuze();
+                    voerTaakUit();
                     break;
             }
         }
@@ -42,28 +46,13 @@ public class COAMedewerker extends Persoon {
 
             scanner.nextLine();
             System.out.println("Voer een geldige keuze in");
-            menuKeuze();
+            voerTaakUit();
         }
 
     }
 
     public void regristreerVluchteling() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Voer de naam van de vluchteling in: ");
-        String naam = scanner.nextLine();
-        System.out.println("Kies het land van herkomst van de vluchteling in:");
-        int counter =0;
-        for (Land land : landen) {
-            counter++;
-            System.out.println("[" + counter + "]" + land.naam);
-        }
-        int getal = scanner.nextInt()-1;
-        scanner.nextLine();
-        System.out.println("Heeft de vluchteling een verblijfsvergunning? (y/n)");
-        String paspoort = scanner.nextLine();
-        boolean kanPaspoortTonen = paspoort.equals("y");
-        Vluchteling vluchteling = new Vluchteling(naam, landen.get(getal), kanPaspoortTonen);
-        vluchtelingen.add(vluchteling);
+        vluchtelingen.add(concretePersoonFactory.createVluchteling());
 
     }
     public void vluchtelingPlaatsen() {

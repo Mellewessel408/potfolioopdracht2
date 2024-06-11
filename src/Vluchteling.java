@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-public class Vluchteling extends Persoon{
+public class Vluchteling extends Persoon {
     String naam;
     Land land;
     Dossier dossier;
@@ -8,7 +8,7 @@ public class Vluchteling extends Persoon{
     Adres adres;
 
     @Override
-    public void menuKeuze () {
+    public void voerTaakUit () {
         System.out.println("Maak een keuze:");
         System.out.println("1.Gegevens opvragen\n2. Dossier aanvragen");
         if (dossier.toegelatenInNederland) {
@@ -33,7 +33,7 @@ public class Vluchteling extends Persoon{
         else {
             System.out.println("Voer een geldige keuze in");
             scanner.nextLine();
-            menuKeuze();
+            voerTaakUit();
         }
     }
     Vluchteling(String naam, Land land ,boolean kanPaspoortTonen) {

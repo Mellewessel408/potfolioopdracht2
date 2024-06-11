@@ -1,9 +1,14 @@
 import java.util.Scanner;
 
-public class Beheerder extends Persoon {
+public class Beheerder extends BevoegdPersoon {
+
+    public Beheerder(String gebruikersnaam, String wachtwoord) {
+        super.gebruikersnaam = gebruikersnaam;
+        super.wachtwoord = wachtwoord;
+    }
     @Override
-    public void menuKeuze() {
-        System.out.println("Maak uw keuze: \n1. Voeg nieuw land toe \n2. Wijzigen of een land veilig is \n3. Een gemeente toevoegen\n4. Voeg AZC toe\n5. Wijzig AZC \n6. Verwijder AZC\n7. Rapportage opvragen\n8. Terug naar inloggen");
+    public void voerTaakUit() {
+        System.out.println("Maak uw keuze: \n1. Voeg nieuw land toe \n2. Wijzigen of een land veilig is \n3. Een gemeente toevoegen\n4. Voeg AZC toe\n5. Wijzig AZC \n6. Verwijder AZC\n7. Rapportage opvragen\n8. uitloggen");
         if (scanner.hasNextInt()) {
 
             switch (scanner.nextInt()) {
@@ -25,7 +30,6 @@ public class Beheerder extends Persoon {
                     break;
                 case 4:
                     voegAZCToe();
-
                     break;
                 case 5:
                     if (!(azcs.isEmpty())) {
@@ -42,7 +46,6 @@ public class Beheerder extends Persoon {
                     else {
                         System.out.println("Voeg eerste een AZC toe.");
                     }
-
                     break;
                 case 7:
                     if (!(azcs.isEmpty())) {
@@ -52,23 +55,21 @@ public class Beheerder extends Persoon {
                         System.out.println("Voeg eerste een gemeente toe.");
                     }
                     break;
+                case 8:
+                    return;
                 default:
                     System.out.println("Voer een geldige keuze in");
-                    menuKeuze();
+                    voerTaakUit();
                     break;
             }
-
         }
         else {
-
             System.out.println("voer een geldige keuze in");
             scanner.nextLine();
-            menuKeuze();
+            voerTaakUit();
         }
-
+        voerTaakUit();
     }
-
-
     public void voegLandToe() {
         System.out.println("Voer het land in:");
         scanner.nextLine();
