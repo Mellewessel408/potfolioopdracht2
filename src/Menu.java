@@ -22,14 +22,12 @@ public class Menu {
                 scanner.next(); // Consumeer de ongeldige invoer
             }
         }
-
         switch (keuze) {
             case 1:
-                System.out.println("Als wie wil je inloggen? \n[1] Beheerder \n[2] COA-medewerker\n[3] Vluchteling");
+                System.out.println("Als wie wil je inloggen? \n[1] Beheerder \n[2] COA-medewerker\n[3] Vluchteling\n[4] BeginMenu");
                 if (scanner.hasNextInt()) {
                     int keuze3 = 0;
                     while (true) {
-                        System.out.print("Voer een geldig getal in: ");
                         if (scanner.hasNextInt()) {
                             keuze3 = scanner.nextInt();
                             break;
@@ -40,16 +38,18 @@ public class Menu {
                     }
                     switch (keuze3) {
                         case 1:
-                            if (inloggen.beheerderInloggen()) {
-                                beheerder.voerTaakUit();
+                            if (inloggen.beheerderInloggen()) beheerder.voerTaakUit();
+                            else {
+                                System.out.println("Ongeldige inlog");
+                                beginMenu();
                             }
-                            beginMenu();
                             break;
                         case 2:
-                            if (inloggen.COAMedewerkerInloggen()) {
-                                coaMedewerker.voerTaakUit();
+                            if (inloggen.COAMedewerkerInloggen()) coaMedewerker.voerTaakUit();
+                            else {
+                                System.out.println("Ongeldige inlog");
+                                beginMenu();
                             }
-                            beginMenu();
                             break;
                         case 3:
                             if (!(BevoegdPersoon.vluchtelingen.isEmpty())) {
@@ -66,14 +66,15 @@ public class Menu {
                             }
                             beginMenu();
                             break;
+                        case 4: beginMenu();
 
-                        default:
-                            System.out.println("Voer een geldige keuze in.");
                     }
+                    beginMenu();
+                    break;
                 }
             case 2:
                 Registreren registreren = new Registreren();
-                System.out.println("Als wie wil je registreren\n[1] Beheerder\n[2] COA-medewerker");
+                System.out.println("Als wie wil je registreren\n[1] Beheerder\n[2] COA-medewerker\n[3] BeginMenu ");
                 int getal = scanner.nextInt();
                 switch (getal) {
                     case 1:
@@ -82,10 +83,9 @@ public class Menu {
                     case 2 :
                         registreren.registreerCAOMedewerker();
                         beginMenu();
+                    case 3: beginMenu();
                 }
-
         }
         beginMenu();
-
     }
 }

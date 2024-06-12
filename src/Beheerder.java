@@ -144,12 +144,17 @@ public class Beheerder extends BevoegdPersoon {
         scanner.nextLine();
         System.out.println("Geef de postcode van de AZC");
         String postcode = scanner.nextLine();
-        System.out.println("Geef de gemeente van de AZC");
-        String gemeente = scanner.nextLine();
+        System.out.println("Kies de gemeente van de AZC");
+        int teller = 0;
+        for (Gemeente gemeente : gemeentes) {
+            teller++;
+            System.out.println("[" + teller + "]" + gemeente.naam);
+        }
+        int getal2 = scanner.nextInt()-1;
         azcs.get(getal).adres.staartNaam = straat;
         azcs.get(getal).adres.nummer = nummer;
         azcs.get(getal).adres.postcode = postcode;
-        azcs.get(getal).adres.gemeente.naam = gemeente;
+        azcs.get(getal).adres.gemeente.naam = gemeentes.get(getal2).naam;
     }
     public void verwijderAZC () {
         Scanner scanner = new Scanner(System.in);

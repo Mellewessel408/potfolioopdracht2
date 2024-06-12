@@ -27,19 +27,25 @@ public class Inloggen {
         String gebruikersnaam = scanner.nextLine();
         System.out.println("Voer je wachtwoord in:");
         String wachtwoord = scanner.nextLine();
-        return beheerders.get(gebruikersnaam).equals(wachtwoord);
+        if(beheerders.containsKey(gebruikersnaam)) {
+            return beheerders.get(gebruikersnaam).equals(wachtwoord);
+        }
+        else return false;
     }
     public boolean COAMedewerkerInloggen() {
         System.out.println("Voer je gebruikersnaam in:");
         String gebruikersnaam = scanner.nextLine();
         System.out.println("Voer je wachtwoord in:");
         String wachtwoord = scanner.nextLine();
-        return COAMedewerkers.get(gebruikersnaam).equals(wachtwoord);
+        if (COAMedewerkers.containsKey(gebruikersnaam)) {
+            return COAMedewerkers.get(gebruikersnaam).equals(wachtwoord);
+        }
+        else return false;
     }
     public void voegBeheerderToe(Beheerder beheerder) {
         beheerders.put(beheerder.gebruikersnaam, beheerder.wachtwoord);
     }
     public void voegCOAMedewerkerToe(COAMedewerker coaMedewerker) {
-        beheerders.put(coaMedewerker.gebruikersnaam, coaMedewerker.wachtwoord);
+        COAMedewerkers.put(coaMedewerker.gebruikersnaam, coaMedewerker.wachtwoord);
     }
 }
