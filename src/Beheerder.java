@@ -14,7 +14,6 @@ public class Beheerder extends BevoegdPersoon {
             switch (scanner.nextInt()) {
                 case 1:
                     voegLandToe();
-
                     break;
                 case 2:
                     if(!(landen.isEmpty())) {
@@ -96,13 +95,13 @@ public class Beheerder extends BevoegdPersoon {
         landen.get(getal).setVeilig(veilig);
     }
 
-
     public void voegGemeenteToe() {
         System.out.println("Wat is de naam van de gemeente?");
         scanner.nextLine();
         String naam = scanner.nextLine();
         System.out.println("Hoeveel inwoners heeft de gemeente ?");
         int aantalInwoners = scanner.nextInt();
+        scanner.nextLine();
         Gemeente gemeente = new Gemeente(naam, aantalInwoners);
         gemeentes.add(gemeente);
     }
