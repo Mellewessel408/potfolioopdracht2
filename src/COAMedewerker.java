@@ -52,7 +52,21 @@ public class COAMedewerker extends BevoegdPersoon {
     }
 
     public void regristreerVluchteling() {
-        vluchtelingen.add(concretePersoonFactory.createVluchteling());
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Voer de naam van de vluchteling in: ");
+        String naam = scanner.nextLine();
+        System.out.println("Kies het land van herkomst van de vluchteling in:");
+        int counter =0;
+        for (Land land : Persoon.landen) {
+            counter++;
+            System.out.println("[" + counter + "]" + land.naam);
+        }
+        int getal = scanner.nextInt()-1;
+        scanner.nextLine();
+        System.out.println("Heeft de vluchteling een verblijfsvergunning? (y/n)");
+        String paspoort = scanner.nextLine();
+        boolean kanPaspoortTonen = paspoort.equals("y");
+        vluchtelingen.add(concretePersoonFactory.createVluchteling(naam, landen.get(getal), kanPaspoortTonen));
 
     }
     public void vluchtelingPlaatsen() {

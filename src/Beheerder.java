@@ -1,10 +1,13 @@
 import java.util.Scanner;
 
 public class Beheerder extends BevoegdPersoon {
-
+    private Scanner scanner;
     public Beheerder(String gebruikersnaam, String wachtwoord) {
         super.gebruikersnaam = gebruikersnaam;
         super.wachtwoord = wachtwoord;
+    }
+    public Beheerder (Scanner scanner) {
+        this.scanner = scanner;
     }
     @Override
     public void voerTaakUit() {

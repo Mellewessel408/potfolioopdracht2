@@ -68,8 +68,17 @@ public class Vluchteling extends Persoon {
             System.out.println("[" + counter + "]" + gemeente);
         }
         adres = new Adres(straat, nummer, postcode, gemeentes.get(scanner.nextInt()-1));
-
-
+    }
+    public static String leeftijdsGroep(int leeftijd){
+        if(leeftijd<=17){
+            return "Kind";
+        }
+        else if (leeftijd <=65){
+            return "Volwassen";
+        }
+        else {
+            return "Senioren";
+        }
     }
 }
 
