@@ -1,14 +1,12 @@
 import java.util.Scanner;
 
 public class Beheerder extends BevoegdPersoon {
-    private Scanner scanner;
+    private Scanner scanner = new Scanner(System.in);
     public Beheerder(String gebruikersnaam, String wachtwoord) {
         super.gebruikersnaam = gebruikersnaam;
         super.wachtwoord = wachtwoord;
     }
-    public Beheerder (Scanner scanner) {
-        this.scanner = scanner;
-    }
+
     @Override
     public void voerTaakUit() {
         System.out.println("Maak uw keuze: \n1. Voeg nieuw land toe \n2. Wijzigen of een land veilig is \n3. Een gemeente toevoegen\n4. Voeg AZC toe\n5. Wijzig AZC \n6. Verwijder AZC\n7. Rapportage opvragen\n8. uitloggen");
